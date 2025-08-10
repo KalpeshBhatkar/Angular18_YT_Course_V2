@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-structural-dir',
@@ -31,6 +32,10 @@ export class StructuralDirComponent {
     {studentId:66 ,name:'FFF', city:'Thane', isActive: true}
   ]
 
+  constructor(private router: Router){
+
+  }
+
   showDiv1()
   {
     this.isDiv1Visiable = true;
@@ -44,5 +49,10 @@ export class StructuralDirComponent {
   toggleDiv2()
   {
     this.isDiv2Visiable = !this.isDiv2Visiable;
+  }
+
+  navigateToAttribute()
+  {
+    this.router.navigateByUrl("attribute-dir");
   }
 }
