@@ -1,0 +1,47 @@
+<div class="mt-2 p-2 bg-secondary text-white rounded">
+    <h1>Control Flow Statement</h1>
+    <p><span>&#64;</span>Switch Case</p>
+</div>
+
+<div class="row pt-3">
+    <div class="col-md-3">
+        <input type="text" [(ngModel)]="dayNumber" />
+    </div>
+    <div class="col-md-3">
+        Day Name is : 
+        @switch (dayNumber)
+        {
+            @case ('1')
+            {
+                <span>Monday</span>
+            }
+            @case ('2')
+            {
+                <span>Tuesday</span>
+            }
+            @case ('3')
+            {
+                <span>Wednesday</span>
+            }
+            @case ('4')
+            {
+                <span>Thursday</span>
+            }
+            @case ('5')
+            {
+                <span>Friday</span>
+            }
+            @case ('6')
+            {
+                <span>Saturday</span>
+            }
+            @case ('7')
+            {
+                <span>Sunday</span>
+            }
+            @default{
+                <span>Wrong Entry</span>
+            }
+        }
+    </div>
+</div>
