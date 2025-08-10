@@ -1,0 +1,80 @@
+<div class="mt-2 p-2 bg-secondary text-white rounded">
+    <h1>Control Statement</h1>
+    <p><span>&#64;</span>if, <span>&#64;</span>if else, <span>&#64;</span>else</p>
+</div>
+<div class="row pt-3">
+    <div class="col-md-3">
+        @if(div1Visible)
+        {
+            <div class="bg-danger p-3 text-center">
+                <h4>Div-1</h4>
+            </div>
+        }
+    </div>
+    <div  class="col-md-3">
+        @if(isWarningDivVisible)
+        {
+            <div class="bg-warning p-3 text-center">
+                <h4>Div-2 warning</h4>
+            </div>
+        }
+        @else
+        {
+            <div class="bg-success p-3 text-center">
+                <h4>Div-2 success</h4>
+            </div>
+        }        
+    </div>    
+    <div  class="col-md-3">
+        @if(num1 == num2)
+        {
+            <div class="bg-secondary p-3 text-center">
+                <h4>Div-3</h4>
+            </div>
+        }
+    </div>    
+    <div class="col-md-3">
+        <div class="bg-primary p-3 text-center"> 
+            @if(selectedStatus == "Active")
+            {
+                <p>Student Is Active</p>
+            }
+            @else if(selectedStatus == "De-Active")
+            {
+                <p>Student Is De-Active</p>                
+            }
+            @else if(selectedStatus == "Pending")
+            {
+                <p>Student Is Pending</p>
+            }
+            @else{
+                <p>Please Select Status</p>
+            }
+        </div>
+    </div>
+</div>
+<div class="row pt-3">
+    <div class="col-md-3 text-center">
+        <button (click)="hideDiv1()" class="btn btn-danger">Hide</button>
+        <button (click)="showDiv1()" class="btn btn-primary mx-2">Show</button>
+    </div>
+    <div class="col-md-3 text-center">
+        <button class="btn btn-success" (click)="toggleDiv2()">Toggle</button>
+    </div>
+    <div class="col-md-3">
+        <div style="display: flex;align-items: center;">
+            <input type="text" [(ngModel)]="num1" placeholder="Num-1" style="width: 50%;" />
+            <input type="text" [(ngModel)]="num2" placeholder="Num-2" style="width: 50%;" />
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div style="display: flex;align-items: center;">
+            <select [(ngModel)]="selectedStatus">
+                <option value="">Select Status</option>
+                <option value="Active">Active</option>
+                <option value="De-Active">De-Active</option>
+                <option value="Pending">Pending</option>
+            </select>
+        </div>
+    </div>
+</div>
