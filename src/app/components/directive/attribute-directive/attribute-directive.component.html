@@ -1,0 +1,113 @@
+<div class="mt-2 p-2 bg-secondary text-white rounded">
+    <h1>Attribute Directive</h1>
+    <p>[ngClass], [ngStyle]</p>
+</div>
+<div class="row pt-3">
+    <div class="col-md-3">
+        <div class="p-3 text-center" [ngClass]="div1BgColor">
+            <h4>Div-1</h4>
+        </div>
+    </div>
+    <div  class="col-md-3">
+        <div class="p-3 text-center" [ngClass]="isDiv2Active ? 'bg-success' : 'bg-warning'">
+            <h4>Div-2</h4>
+        </div>
+    </div>    
+    <div  class="col-md-3">
+        <div class="p-3 text-center" [ngClass]="num1 == num2 ? 'bg-secondary text-white' : 'bg-danger text-primary'">
+            <h4>Div-3</h4>
+        </div>
+    </div>    
+    <div class="col-md-3">
+        <div class="p-3 text-center" [ngClass]="isActive ? 'bg-primary' : ''">
+            <h4>Div-4</h4>
+        </div>
+    </div>
+</div>
+<div class="row pt-3">
+    <div class="col-md-3 text-center">
+        <button class="btn btn-danger" (click)="addRedClass()">Add Red</button>
+        <button class="btn btn-primary mx-2" (click)="addBlueClass()">Add Blue</button>
+    </div>
+    <div class="col-md-3 text-center">
+        <button class="btn btn-success" (click)="toggleDiv2Class()">Toggle</button>
+    </div>
+    <div class="col-md-3">
+        <div style="display: flex;align-items: center;">
+            <input type="text" [(ngModel)]="num1" placeholder="Num-1" style="width: 50%;" />
+            <input type="text" [(ngModel)]="num2" placeholder="Num-2" style="width: 50%;" />
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div style="display: flex;align-items: center;">
+            <input type="checkbox" [(ngModel)]="isActive" style="width: 50%;" />
+            <select>
+                <option value="">Select State</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="SriLanka">SriLanka</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="row  pt-3">
+    <div class="col-3">
+        <ul>
+            <li *ngFor="let city of cityArray">{{city}}</li>
+        </ul>
+    </div>
+    <div class="col-3">
+        <div *ngFor="let city of cityArray">{{city}}</div>
+    </div>
+    <div class="col-3">
+        <select>
+            <option *ngFor="let city of cityArray" [value]="city">{{city}}</option>
+        </select>
+    </div>
+    <div class="col-3">
+        <select>
+            <option *ngFor="let student of studentList" [value]="student.studentId">{{student.name}}</option>
+        </select>
+    </div>
+</div>-->
+
+<div class="row pt-3">
+    <div class="col-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Gender</th>
+                    <th>Status</th>
+                    <th>Total Mark</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let student of studentList; let srno = index" >
+                    <td>{{srno+1}}</td>
+                    <td>{{student.name}}</td>
+                    <td>{{student.city}}</td>
+                    <td>{{student.gender}}</td>
+                    <td [ngStyle]="{'background-color': student.isActive ? 'yellow' : 'red'}">
+                        <span>{{student.isActive ? 'Active' : 'De-Active'}}</span>
+                        <!-- <span *ngIf="student.isActive">Active</span>
+                        <span *ngIf="!student.isActive">De-Active</span> -->
+                    </td>
+                    <td>
+                        <div class="progress">
+                            <div class="progress-bar" [ngStyle]="{'width': student.totalMarks + '%'}">{{student.totalMarks}}</div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> 
+<div class="row pt-3">
+    <div class="col-12">
+        <div [ngStyle]="customStyle">Div Test Test</div>
+        </div>
+</div> 
