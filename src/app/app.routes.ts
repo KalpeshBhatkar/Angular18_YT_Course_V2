@@ -7,6 +7,7 @@ import { AttributeDirectiveComponent } from './components/directive/attribute-di
 import { IfelseComponent } from './components/controlFlow/ifelse/ifelse.component';
 import { ForComponent } from './components/controlFlow/for/for.component';
 import { SwitchComponent } from './components/controlFlow/switch/switch.component';
+import { PipeComponent } from './components/pipe/pipe.component';
 
 export const routes: Routes = [
     {
@@ -40,5 +41,9 @@ export const routes: Routes = [
     {
         path: 'switch-case',
         component: SwitchComponent
+    },
+    {
+        path: 'pipe',
+        component: PipeComponent
     }
 ];
