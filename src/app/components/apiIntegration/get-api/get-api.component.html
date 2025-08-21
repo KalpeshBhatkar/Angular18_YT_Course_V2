@@ -1,0 +1,31 @@
+<div class="mt-2 p-2 bg-secondary text-white rounded">
+    <h1>get-api</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <button class="btn btn-success" (click)="getAllUser()">Get Users</button>
+    </div>
+    <div class="col-md-3">
+        <select class="form-select">
+            @for(item of userList;track $index)
+            {
+                <option>{{item.name}}</option>
+            }
+        </select>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <button class="btn btn-success" (click)="getAllCustomer()">Get Customer</button>
+    </div>
+    <div class="col-md-3">
+        <select class="form-select">
+            @for(item of CustomerList;track $index)
+            {
+                <option>{{item.name}}</option>
+            }
+        </select>
+    </div>
+</div>
