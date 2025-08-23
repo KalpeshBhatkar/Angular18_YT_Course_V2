@@ -2,10 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DepartmentService } from '../../../service/department.service';
+import { AlertComponent } from '../../../resuableComponent/alert/alert.component';
+import { MyButtonComponent } from '../../../resuableComponent/my-button/my-button.component';
 
 @Component({
   selector: 'app-post-api',
-  imports: [FormsModule],
+  imports: [FormsModule, AlertComponent, MyButtonComponent],
   templateUrl: './post-api.component.html',
   styleUrl: './post-api.component.css'
 })
@@ -27,6 +29,10 @@ export class PostApiComponent implements OnInit {
     //alert(result);
     //this.deptSrv.apiURL = "New URL";
 
+  }
+
+  getData(data: any){
+    console.log(data);
   }
 
   ngOnInit(): void {

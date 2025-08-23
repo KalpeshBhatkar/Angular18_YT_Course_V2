@@ -1,8 +1,10 @@
 <div class="mt-2 p-2 bg-secondary text-white rounded">
     <h1>Post-api</h1>
 </div>
-
-
+<app-alert [alertType]="'Success'" [message]="'Welcome to Post API Page'"></app-alert>
+<br />
+<app-alert [alertType]="'Error'" [message]="'Some error Occoured'"></app-alert>
+<app-my-button (onBtnClick)="getData($event)" [btnClass]="'btn btn-primary'" [btnText]="'Save Record'"></app-my-button>
 <div class="row pt-2">
     <div class="col-7">
         <div class="card">
@@ -30,7 +32,8 @@
                                         <td>{{item.body}}</td>
                                         <td>
                                             <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
-                                            <button class="btn btn-danger" (click)="onDelete(item.Id)">Delete</button>
+                                            <!-- <button class="btn btn-danger" (click)="onDelete(item.Id)">Delete</button> -->
+                                             <app-my-button (onBtnClick)="onDelete(item.Id)" [btnClass]="'btn btn-danger'" [btnText]="'Delete'"></app-my-button>
                                         </td>
                                     </tr>
                                 }
