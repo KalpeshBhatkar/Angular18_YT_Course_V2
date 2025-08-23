@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 export class PostApiComponent implements OnInit {
 
   postObj: any = {
+    "id": 0,
     "userId": 0,
     "title": "",
     "body": ""
@@ -27,7 +28,7 @@ export class PostApiComponent implements OnInit {
   onSave(){
     debugger;
     this.http.post("https://jsonplaceholder.typicode.com/posts",this.postObj).subscribe((res:any)=>{
-      console.log(res);
+      //console.log(res);
       if(res){
         alert("Post Created Success");
         this.getPosts();
@@ -41,17 +42,48 @@ export class PostApiComponent implements OnInit {
   }
 
   onUpdate(){
+    this.http.put("https://jsonplaceholder.typicode.com/posts/"+this.postObj.id,this.postObj).subscribe((res:any)=>{
+      if(res){
+        alert("Post Updated Success");
+        this.getPosts();
+      }
+      else{
+        alert("Something went wrong");
+      }
+    },error =>{
+      console.log(error);
+    })
 
   }
 
   getPosts(){
     this.http.get("https://jsonplaceholder.typicode.com/posts").subscribe((result:any)=>{
-      console.log(result);
+      //console.log(result);
       this.postList = result;
     }, error=>{
       console.log(error);
     });
   }
 
+  onEdit(data: any){
+    this.postObj = data;
+  }
+
+  onDelete(id: number) {
+    const isDelete = confirm("Are you sure want to delete");
+    if (isDelete) {
+      this.http.delete("https://jsonplaceholder.typicode.com/posts/" + id).subscribe((res: any) => {
+        if (res) {
+          alert("Post Delete Success");
+          this.getPosts();
+        }
+        else {
+          alert("Something went wrong");
+        }
+      }, error => {
+        console.log(error);
+      })
+    }
+  }
 
 }
