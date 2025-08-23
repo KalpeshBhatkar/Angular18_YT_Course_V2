@@ -14,6 +14,8 @@ export class GetApiComponent {
   userList: any[] = [];
   CustomerList: any[] = [];
 
+  alertMessage:string = 'Welcome to GET API Page';
+
   constructor(private http: HttpClient)
   {
     this.getAllUser();
@@ -33,5 +35,9 @@ export class GetApiComponent {
     }, error=>{
       console.log(error);
     })
+  }
+
+  changeAlerMessage(){
+    this.alertMessage = 'sdkjfhk';
   }
 }

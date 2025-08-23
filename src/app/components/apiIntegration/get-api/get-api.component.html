@@ -1,7 +1,7 @@
 <div class="mt-2 p-2 bg-secondary text-white rounded">
     <h1>get-api</h1>
 </div>
-<app-alert [alertType]="'Warning'" [message]="'Welcome to GET API Page'"></app-alert>
+<app-alert [alertType]="'Warning'" [message]="alertMessage"></app-alert>
 <div class="row pt-2">
     <div class="col-md-2">
         <button class="btn btn-success" (click)="getAllUser()">Get Users</button>
@@ -10,7 +10,7 @@
         <select class="form-select">
             @for(item of userList;track $index)
             {
-                <option>{{item.name}}</option>
+            <option>{{item.name}}</option>
             }
         </select>
     </div>
@@ -24,8 +24,12 @@
         <select class="form-select">
             @for(item of CustomerList;track $index)
             {
-                <option>{{item.name}}</option>
+            <option>{{item.name}}</option>
             }
         </select>
     </div>
+</div>
+
+<div class="row pt-2">
+    <button class="btn btn-success" (click)="changeAlerMessage()">Change Message</button>
 </div>
