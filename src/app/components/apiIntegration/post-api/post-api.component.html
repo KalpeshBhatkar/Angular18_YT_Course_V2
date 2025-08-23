@@ -1,0 +1,75 @@
+<div class="mt-2 p-2 bg-secondary text-white rounded">
+    <h1>Post-api</h1>
+</div>
+
+
+<div class="row pt-2">
+    <div class="col-7">
+        <div class="card">
+            <div class="card-header bg-secondary text-white">
+                Department List
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sr No</th>
+                                    <th>Name</th>
+                                    <th>Logo</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for(item of postList; track $index)
+                                {
+                                    <tr>
+                                        <td>{{$index+1}}</td>
+                                        <td>{{item.title}}</td>
+                                        <td>{{item.body}}</td>
+                                        <td>
+                                            <button class="btn btn-primary">Edit</button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-5">
+        <div class="card">
+            <div class="card-header bg-secondary text-white">
+                New Department
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <label for="">Department Title</label>
+                        <input type="text" [(ngModel)]="postObj.title" class="form-control" placeholder="Enter Name">
+                    </div>
+                    <div class="col-12">
+                        <label for="">Department Body</label>
+                        <input type="text" [(ngModel)]="postObj.body" class="form-control" placeholder="Enter Logo Url">
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    <div class="col-6 text-center">
+                        <button class="btn btn-secondary">Reset</button>
+                    </div>
+                    <div class="col-6 text-center">
+                        @if(postObj.userId == 0) {
+                        <button class="btn btn-success" (click)="onSave()">Save </button>
+                        }@else {
+                        <button class="btn btn-warning" (click)="onUpdate()">Update </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
