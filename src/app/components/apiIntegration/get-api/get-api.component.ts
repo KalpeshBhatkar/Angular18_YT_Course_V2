@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { AlertComponent } from '../../../resuableComponent/alert/alert.component';
+import { Customer } from '../../../model/class/Customer';
+import { IUser } from '../../../model/interface/IUser';
 
 @Component({
   selector: 'app-get-api',
@@ -11,7 +13,8 @@ import { AlertComponent } from '../../../resuableComponent/alert/alert.component
 })
 export class GetApiComponent {
 
-  userList: any[] = [];
+  userList: Customer[] = [];
+  userList2: IUser[] = [];
   CustomerList: any[] = [];
 
   alertMessage:string = 'Welcome to GET API Page';
@@ -23,8 +26,12 @@ export class GetApiComponent {
 
   getAllUser()
   {
-    this.http.get("https://jsonplaceholder.typicode.com/users").subscribe((result:any)=>{
+    this.http.get("https://json-placeholder.mock.beeceptor.com/users").subscribe((result:any)=>{
       this.userList = result;
+    });
+    
+    this.http.get("https://jsonplaceholder.typicode.com/users").subscribe((result:any)=>{
+      this.userList2 = result;
     });
   }
 

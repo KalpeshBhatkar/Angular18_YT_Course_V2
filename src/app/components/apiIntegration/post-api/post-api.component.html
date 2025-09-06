@@ -28,12 +28,12 @@
                                 {
                                     <tr>
                                         <td>{{$index+1}}</td>
-                                        <td>{{item.title}}</td>
-                                        <td>{{item.body}}</td>
+                                        <td>{{item.name}}</td>
+                                        <td>{{item.username}}</td>
                                         <td>
                                             <button class="btn btn-primary" (click)="onEdit(item)">Edit</button>
                                             <!-- <button class="btn btn-danger" (click)="onDelete(item.Id)">Delete</button> -->
-                                             <app-my-button (onBtnClick)="onDelete(item.Id)" [btnClass]="'btn btn-danger'" [btnText]="'Delete'"></app-my-button>
+                                             <app-my-button (onBtnClick)="onDelete(item.id)" [btnClass]="'btn btn-danger'" [btnText]="'Delete'"></app-my-button>
                                         </td>
                                     </tr>
                                 }

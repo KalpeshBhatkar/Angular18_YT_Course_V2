@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { DepartmentService } from '../../../service/department.service';
 import { AlertComponent } from '../../../resuableComponent/alert/alert.component';
 import { MyButtonComponent } from '../../../resuableComponent/my-button/my-button.component';
+import { post } from '../../../model/class/Customer';
+import { IPost } from '../../../model/interface/IUser';
 
 @Component({
   selector: 'app-post-api',
@@ -13,14 +15,16 @@ import { MyButtonComponent } from '../../../resuableComponent/my-button/my-butto
 })
 export class PostApiComponent implements OnInit {
 
-  postObj: any = {
-    "id": 0,
-    "userId": 0,
-    "title": "",
-    "body": ""
-  };
+  // postObj: any = {
+  //   "id": 0,
+  //   "userId": 0,
+  //   "title": "",
+  //   "body": ""
+  // };
 
-  postList: any[] = [];
+  postObj: post = new post();
+  //postList: any[] = [];
+  postList: IPost[] = [];
 
   http = inject(HttpClient);
 
@@ -105,6 +109,7 @@ export class PostApiComponent implements OnInit {
   }
 
   onEdit(data: any){
+    this.postObj = new post();
     this.postObj = data;
   }
 
