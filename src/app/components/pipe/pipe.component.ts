@@ -2,6 +2,7 @@ import { AsyncPipe, DatePipe, JsonPipe, LowerCasePipe, TitleCasePipe, UpperCaseP
 import { Component } from '@angular/core';
 import { interval,  Observable, map } from 'rxjs';
 import { NaPipe } from '../../pipes/na.pipe';
+import { DepartmentService } from '../../service/department.service';
 
 @Component({
   selector: 'app-pipe',
@@ -25,7 +26,20 @@ export class PipeComponent {
     state:''
   }
 
-  constructor(){
+  currentRoleusingSubject: string = '';
+  currentRoleusingBehaviorSubject: string = '';
+
+  constructor(private deptService: DepartmentService){
       this.currentTime = interval(1000).pipe(map(() => new Date()));
+
+      this.deptService.Subject_onRoleChange$.subscribe((role:string) => {
+        debugger;
+        this.currentRoleusingSubject = role;
+      });
+
+      this.deptService.BehaviorSubject_onRoleChange$.subscribe((role:string) => {
+        debugger;
+        this.currentRoleusingBehaviorSubject = role;
+      });
   }
 }

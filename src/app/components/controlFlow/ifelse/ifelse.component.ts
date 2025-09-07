@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DepartmentService } from '../../../service/department.service';
 
 @Component({
   selector: 'app-ifelse',
@@ -27,5 +28,21 @@ export class IfelseComponent {
 
   toggleDiv2(){
     this.isWarningDivVisible = !this.isWarningDivVisible;
+  }
+
+  currentRoleusingSubject: string = '';
+  currentRoleusingBehaviorSubject: string = '';
+
+  constructor(private deptService: DepartmentService){
+
+      this.deptService.Subject_onRoleChange$.subscribe((role:string) => {
+        debugger;
+        this.currentRoleusingSubject = role;
+      });
+
+      this.deptService.BehaviorSubject_onRoleChange$.subscribe((role:string) => {
+        debugger;
+        this.currentRoleusingBehaviorSubject = role;
+      });
   }
 }
