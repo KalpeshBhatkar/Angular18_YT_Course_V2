@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Constant } from '../constant/Constant';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { MasterService } from './master/master.service';
+import { IUser } from '../model/interface/IUser';
 
 @Injectable({
   providedIn: 'root'
@@ -14,14 +16,14 @@ export class DepartmentService {
 
 
   //apiURL: string = "https://jsonplaceholder.typicode.com/";
-  constructor(private http: HttpClient) { }
+  constructor(private master: MasterService) { }
 
-  getAllDept(){
-    return this.http.get(Constant.API_URL + Constant.DEPARTMENT_METHODS.ADD_NEW_DEPT);
+  getAllDept():Observable<IUser>{
+    return this.master.get<IUser>(Constant.API_URL + Constant.DEPARTMENT_METHODS.ADD_NEW_DEPT);
   }
 
   saveNewDept(obj: any){
-    return this.http.post(`${Constant.API_URL}${Constant.DEPARTMENT_METHODS.ADD_NEW_DEPT}`,obj);
+    return this.master.post(`${Constant.API_URL}${Constant.DEPARTMENT_METHODS.ADD_NEW_DEPT}`,obj);
   }
 
   addTwoNo(num1:number, num2:number){
